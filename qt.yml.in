@@ -1,0 +1,38 @@
+Default: &defaults
+  owner:
+    real-name: FILL THIS IN
+    email: FILL THIS IN
+  database: /var/lib/qt/qt.db
+  process: &process-defaults
+    pidfile: /var/run/qt/qt.pid
+    error-log: /var/log/qt.log
+    user: qt
+    group: qt
+    daemonize: true
+  networks:
+    Foonetic:
+      self:
+        nickname: qt
+        nickserv-password: FILL THIS IN
+        mode: B
+      channels:
+        '#test': {}
+      nickserv:
+        nickname: nickserv
+        commands:
+          register: 'REGISTER @password@ @email@'
+          identify: 'IDENTIFY @password@'
+      servers:
+        -
+          host: irc.foonetic.net
+          ports:
+            - 6667
+
+Development:
+  <<: *defaults
+  processs:
+    <<: *process-defaults
+    daemonize: false
+
+Production:
+  <<: *defaults
