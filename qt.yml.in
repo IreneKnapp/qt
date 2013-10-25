@@ -30,7 +30,7 @@ Default: &defaults
 
 Development:
   <<: *defaults
-  processs:
+  process:
     <<: *process-defaults
     daemonize: false
 

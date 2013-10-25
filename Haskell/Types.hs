@@ -1,9 +1,15 @@
 module Types
-  (TemplatePart(..),
+  (Main,
+   TemplatePart(..),
    parseTemplate)
   where
 
 import qualified Data.Text as Text
+
+import Control.Monad.Logger
+
+
+type Main a = LoggingT IO a
 
 
 {-

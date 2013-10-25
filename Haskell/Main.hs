@@ -1,10 +1,11 @@
+{-# LANGUAGE OverloadedStrings, TemplateHaskell #-}
 module Main (main) where
 
+import Import
+
 import Configuration
-import Settings
-import Types
 
 
 main :: IO ()
 main = mainWrapper $ \settings -> do
-  putStrLn $ show settings
+  $(logDebug) "Hmm"
