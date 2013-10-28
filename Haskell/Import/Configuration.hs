@@ -1,7 +1,10 @@
-module Configuration
+module Import.Configuration
   (DeploymentEnvironment(..),
    mainWrapper)
   where
+
+import Prelude as Import hiding
+  (head, init, last, readFile, tail, writeFile, catch)
 
 import qualified Data.Map as Map
 import qualified Data.Text as Text
@@ -11,8 +14,8 @@ import Control.Monad.Logger
 import System.Environment
 import System.Exit
 
-import Settings
-import Types
+import Import.Settings
+import Import.Types
 
 
 data DeploymentEnvironment

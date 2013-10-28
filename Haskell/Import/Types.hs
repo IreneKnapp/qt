@@ -1,10 +1,14 @@
-module Types
+module Import.Types
   (Main,
    TemplatePart(..),
    parseTemplate)
   where
 
+import Prelude as Import hiding
+  (head, init, last, readFile, tail, writeFile, catch)
+
 import qualified Data.Text as Text
+import qualified System.IO as IO
 
 import Control.Monad.Logger
 

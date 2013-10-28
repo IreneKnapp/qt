@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings, MultiParamTypeClasses, FlexibleContexts #-}
-module Settings
+module Import.Settings
   (Settings(..),
    OwnerSettings(..),
    DatabaseSettings(..),
@@ -13,6 +13,9 @@ module Settings
    ServerSettings(..))
   where
 
+import Prelude as Import hiding
+  (head, init, last, readFile, tail, writeFile, catch)
+
 import qualified Data.ByteString as ByteString
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.Map as Map
@@ -25,7 +28,7 @@ import Control.Applicative
 import Control.Monad
 import Data.Yaml
 
-import Types
+import Import.Types
 
 
 class FromJSON' data' parameter where
@@ -189,15 +192,13 @@ instance FromJSON NickservSettings where
 
 
 data NickservCommandSettings = NickservCommandSettings {
-    nickservCommandSettingsRegister :: ServiceCommandSettings,
     nickservCommandSettingsIdentify :: ServiceCommandSettings
   }
   deriving (Show)
 instance FromJSON NickservCommandSettings where
   parseJSON (Object value) = do
     NickservCommandSettings
-      <$> value .: "register"
-      <*> value .: "identify"
+      <$> value .: "identify"
   parseJSON _ = fail "Expected nickserv-command-settings object."
 
 

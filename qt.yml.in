@@ -20,7 +20,6 @@ Default: &defaults
       nickserv:
         nickname: nickserv
         commands:
-          register: 'REGISTER @password@ @email@'
           identify: 'IDENTIFY @password@'
       servers:
         -
